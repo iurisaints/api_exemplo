@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos — Frontend da nossa API</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topo">
+      <div class="conteudo-topo">
+        <p class="etiqueta">Consumindo a nossa API</p>
+        <h1>Catálogo de produtos</h1>
+        <p class="subtitulo">
+          Este frontend fala com a API em
+          <code>http://localhost:3000</code>
+          usando <code>fetch</code>.
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="painel" aria-labelledby="titulo-formulario">
+        <h2 id="titulo-formulario">Novo produto</h2>
+        <p id="texto-modo" class="ajuda">
+          Preencha o formulário e clique em salvar para enviar um
+          <code>POST /produtos</code>.
+        </p>
+
+        <form id="formulario-produto">
+          <input type="hidden" id="produto-id" />
+
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Ex.: Mouse sem fio"
+            required
+          />
+
+          <label for="preco">Preço</label>
+          <input
+            type="number"
+            id="preco"
+            name="preco"
+            min="0"
+            step="0.01"
+            placeholder="Ex.: 99.90"
+            required
+          />
+
+          <label for="descricao">Descrição</label>
+          <textarea
+            id="descricao"
+            name="descricao"
+            rows="3"
+            placeholder="Opcional"
+          ></textarea>
+
+          <div class="acoes-formulario">
+            <button type="submit" id="botao-salvar">Salvar produto</button>
+            <button type="button" id="botao-cancelar" class="secundario oculto">
+              Cancelar edição
+            </button>
+          </div>
+        </form>
+
+        <p id="mensagem" class="mensagem" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="painel" aria-labelledby="titulo-lista">
+        <div class="cabecalho-lista">
+          <div>
+            <h2 id="titulo-lista">Lista de produtos</h2>
+            <p class="ajuda">Dados vindos de <code>GET /produtos</code>.</p>
+          </div>
+          <button type="button" id="botao-atualizar" class="secundario">
+            Atualizar lista
+          </button>
+        </div>
+
+        <div id="lista-produtos" class="lista-produtos"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
